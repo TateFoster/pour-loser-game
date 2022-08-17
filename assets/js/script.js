@@ -14,12 +14,10 @@ fetch(quizUrl)
   })
   .then(function (data) {
     console.log(data);
-    return data;
   });
 
 // TODO: variables score, mistakes, question/answer  form
 
-console.log(quiz);
 fetch(rewardUrl)
   .then(function (response) {
     return response.json();
