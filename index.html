@@ -11,7 +11,7 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Document</title>
   </head>
@@ -21,10 +21,11 @@
       <h1 class="hover">Pour Loser</h1>
     </header>
     <!-- main body container has cards either side and quiz center -->
+
     <main class="container-fluid row d-flex justify-content-between">
       <!-- score card -->
       <div class="card col-12 col-md-2">
-        <img src="..." class="card-img-top" alt="..." />
+        <img src="#" class="card-img-top" alt="#" />
         <div class="card-body">
           <h5 class="card-title">Last Score</h5>
           <p class="card-text" id="score">
@@ -38,13 +39,20 @@
         class="jumbotron d-flex flex-column align-items-center col-12 col-md-8"
       >
         <!-- dynamic elements here -->
-        <h3>rules</h3>
-        <p>rules must be spelled correctly</p>
-        <button class="btn btn-primary">Start Trivia</button>
+        <h2>rules</h2>
+        <h3>rules must be spelled correctly</h3>
+        <form id="answerForm" class="hidden" action="">
+          <label for=""
+            >Answer:
+            <input id="answer" type="text" placeholder="answer here" />
+          </label>
+          <input type="submit" />
+        </form>
+        <button id="startBtn" class="btn btn-primary">Start Trivia</button>
       </div>
       <!-- last earned drink -->
       <div class="card col-12 col-md-2">
-        <img src="..." class="card-img-top" alt="..." />
+        <img src="#" class="card-img-top" alt="#" />
         <div class="card-body">
           <h5 class="card-title" id="drinkName">Card title</h5>
           <p class="card-text" id="instructions">
