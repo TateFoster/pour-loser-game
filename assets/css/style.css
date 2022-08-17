@@ -1,0 +1,38 @@
+header {
+    width: 100%;
+    background-color: black;
+    color: gold;
+    text-align: center;
+    padding: 20px;
+    font-weight: bolder;
+    font-size: 50px;
+    font-family: 'Fredoka one', 'Permanent Marker','Kanit';
+}
+.hover {
+    margin: 0px 250px;
+    --d:14px;
+    
+    padding: calc(8px + var(--d)) 8px 8px 8px;
+    background: linear-gradient(rgba(255,255,255,0.4) 0 0) top/100% var(--d) no-repeat;
+    clip-path: polygon(0 var(--d),3px var(--d),calc(100% - 3px) var(--d),100% var(--d),100% 100%,0 100%); 
+    transform: perspective(1000px) rotateX(0deg);
+    transition: 0.4s,color 0.4s 0.4s,background-color 0.4s 0.4s;
+}
+.hover:hover {
+    background-color: rgb(83, 4, 4);
+    color: rgb(132, 125, 71);
+    clip-path: polygon(0 var(--d),3px 0,calc(100% - 3px) 0,100% var(--d),100% 100%,0 100%); 
+    transform: perspective(1000px) rotateX(-40deg);
+    transition: 0.4s,clip-path 0.4s 0.4s,transform 0.4s 0.4s;
+}
+ 
+
+
+
+
+
+
+
+
+
+
