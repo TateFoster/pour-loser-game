@@ -6,31 +6,45 @@ var index = 0;
 var start = document.querySelector("#startBtn");
 var answerForm = document.querySelector("#answerForm");
 var answer = document.querySelector("#answer");
-var quiz;
+
 
 function getData(data) {
   console.log(data)
-  var questionArray = []
-  // for index in data
-    // data.question
+  var categoryArray = [];  // array to hold the categories
+  var questionArray = [];  // array to hold the questions
+  var answerArray = [];  // array to hold the answers
+  // for each item in data
+  for (var i = 0; i < 5; i++) {
+    // add new Category to the categoryArray
+    categoryArray[i] = data[i].category['title'];
+    // add new Question to the questionArray
+    questionArray[i] = data[i].question;
+    // add new Answer to the answerArray
+    answerArray[i] = data[i].answer;
+  }
 
+  // clean answers
+  // keyword collection
+
+  // change #category TextContent
+  // change #question TextContent
+  
 }
 
+// TODO: FUNction to generate questions from API
+function startQuiz(event) {
+  event.preventDefault();
+  start.classList.add("hidden");
+  answerForm.classList.remove("hidden");
 
-
-
-
-fetch(quizUrl)
+  fetch(quizUrl)
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
     var newData = data;
     getData(newData);
   });
-
-// TODO: variables score, mistakes, question/answer  form
 
 fetch(rewardUrl)
   .then(function (response) {
@@ -39,13 +53,8 @@ fetch(rewardUrl)
   .then(function (data) {
     console.log(data);
   });
-
-// TODO: FUNction to generate questions from API
-function startQuiz(event) {
-  event.preventDefault();
-  start.classList.add("hidden");
-  answerForm.classList.remove("hidden");
 }
+
 // TODO: FUnction to display drink recipe on loss
 
 // TODO: have event listener for click for starting game
