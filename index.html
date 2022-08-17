@@ -13,16 +13,18 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/button.css" />
     <title>Document</title>
   </head>
-  <body>
+  <body
+    class="body d-flex align-items-center justify-content-between flex-wrap"
+  >
     <!-- header element -->
     <header>
-      <h1 class="hover">Pour Loser</h1>
+      <h1></h1>
     </header>
     <!-- main body container has cards either side and quiz center -->
-
-    <main class="container-fluid row d-flex justify-content-between">
+    <main class="container-fluid row d-flex justify-content-between flex-start">
       <!-- score card -->
       <div class="card col-12 col-md-2">
         <img src="#" class="card-img-top" alt="#" />
@@ -48,13 +50,13 @@
           </label>
           <input type="submit" />
         </form>
-        <a href="#">
+        <a href="#" class="button">
           <span>Button</span>
           <div class="liquid"></div>
         </a>
       </div>
       <!-- last earned drink -->
-      <div class="card col-12 col-md-2">
+      <div class="card col-12 col-md-2 flex-end">
         <img src="#" class="card-img-top" alt="#" />
         <div class="card-body">
           <h5 class="card-title" id="drinkName">Card title</h5>
@@ -69,7 +71,7 @@
       </div>
     </main>
     <!-- footer element -->
-    <footer>Pour losers inc</footer>
+    <footer class="col-12 bg-white align-self-end">Pour losers inc</footer>
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -81,5 +83,9 @@
       src="https://cpwebassets.codepen.io/assets/embed/ei.js"
     ></script>
     <script src="./assets/js/script.js"></script>
+    <script
+      async
+      src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+    ></script>
   </body>
 </html>
