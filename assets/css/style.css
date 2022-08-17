@@ -4,11 +4,11 @@
 
 body{
     background-image: url(../images/burgundy-gold-pixilate-in.gif);
+    background-position: top center;
+    background-repeat: no-repeat;
     background-size: cover;
-    
-    
-    
-    /* height: 100vh; */
-    /* padding:0;
-    margin:0; */
+}
+
+.container-fluid {
+    margin-top: 100px;
 }

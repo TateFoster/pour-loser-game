@@ -33,7 +33,7 @@
     left: 0;
     width: 200px;
     height: 200px;
-    background: #4973ff;
+    background: #e0d757;
     box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
     transition: .5s;
   }
@@ -64,10 +64,11 @@
     animation: animate 10s linear infinite;
   }
   
-  .button:hover .liquid{
+  /* .button:hover .liquid{
     top: -120px;
-  }
-  
+  } */
+
+ 
   @keyframes animate {
     0% {
       transform: translate(-50%, -75%) rotate(0deg);
