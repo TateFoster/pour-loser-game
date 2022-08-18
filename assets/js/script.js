@@ -3,15 +3,48 @@ var rewardUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 var score = 0;
 var mistakes = 0;
 var index = 0;
+var oldScore = 0;
+var rulesEl = document.querySelector("#rules");
 var start = document.querySelector("#startBtn");
-var answerForm = document.querySelector("#answerForm");
+var answerFormEl = document.querySelector("#answerForm");
 var answer = document.querySelector("#answer");
-var oldDrink = document.querySelector("#oldName");
-var oldGlass = document.querySelector("#oldGlass");
-var oldDrinkImg = document.querySelector("#oldDrinkImg");
+var oldScoreEl = document.querySelector("#score");
+var oldDrinkEl = document.querySelector("#oldName");
+var oldAlcEl = document.querySelector("#oldAlc");
+var oldGlassEl = document.querySelector("#oldGlass");
+var oldDrinkImgEl = document.querySelector("#oldDrinkImg");
+var oldDrinkInstructionsEl = document.querySelector("#oldInstructions");
+var oldDrinkIngredientsEl = document.querySelector("#oldIngredients");
 var categoriesEl = document.querySelector("#category");
 var questionsEl = document.querySelector("#question");
 var quizEl = document.querySelector("#quizBoard");
+
+oldDrinkCard();
+oldScoreCard();
+
+function oldDrinkCard() {
+	var oldDrink = JSON.parse(localStorage.getItem("drink"));
+	console.log(oldDrink);
+	if (oldDrink !== null) {
+		oldDrinkImgEl.src = oldDrink.image;
+		oldDrinkEl.textContent = oldDrink.name;
+		oldAlcEl.textContent = oldDrink.alcoholic;
+		oldDrinkInstructionsEl.textContent = oldDrink.instructions;
+		for (i = 0; i < oldDrink.ingredients.length; i++) {
+			var oldIngredientEl = document.createElement("li");
+			oldIngredientEl.textContent = oldDrink.ingredients[i];
+			oldDrinkIngredientsEl.appendChild(oldIngredientEl);
+		}
+	}
+}
+
+function oldScoreCard() {
+	var pullScore = localStorage.getItem("lastScore");
+	if (pullScore !== null) {
+		oldScore = pullScore;
+	}
+	oldScoreEl.textContent = oldScore;
+}
 
 function getData(data) {
 	console.log(data);
@@ -38,8 +71,9 @@ function getData(data) {
 // TODO: FUNction to generate questions from API
 function startQuiz(event) {
 	event.preventDefault();
+	rulesEl.remove();
 	start.classList.add("hidden");
-	answerForm.classList.remove("hidden");
+	answerFormEl.classList.remove("hidden");
 
 	fetch(quizUrl)
 		.then(function (response) {
@@ -115,21 +149,34 @@ function gameLost() {
 
 	function gameReward(reward) {
 		start.classList.add("hidden");
-		answerForm.classList.add("hidden");
-		categoriesEl.textContent = reward.drinks[0].strDrink;
-		questionsEl.textContent = reward.drinks[0].strAlcoholic;
-		var glassType = document.createElement("h4");
-		glassType.textContent = reward.drinks[0].strGlass;
-		quizEl.appendChild(glassType);
+		answerFormEl.classList.add("hidden");
+		rulesEl.remove();
+		var congratulations = document.createElement("h2");
+		congratulations.textContent =
+			"Pour Loser! You scored " + score + " have a drink!";
+		quizEl.prepend(congratulations);
 
-		var drinkImg = document.createElement("img");
-		drinkImg.src = reward.drinks[0].strDrinkThumb;
-		drinkImg.classList.add("w-50");
-		quizEl.appendChild(drinkImg);
+		var drinkName = reward.drinks[0].strDrink;
+		categoriesEl.textContent = drinkName;
 
-		var drinkInstructions = document.createElement("p");
-		drinkInstructions.textContent = reward.drinks[0].strInstructions;
-		quizEl.appendChild(drinkInstructions);
+		var drinkAlc = reward.drinks[0].strAlcoholic;
+		questionsEl.textContent = drinkAlc;
+
+		var glassType = reward.drinks[0].strGlass;
+		var glassTypeEl = document.createElement("h4");
+		glassTypeEl.textContent = glassType;
+		quizEl.appendChild(glassTypeEl);
+
+		var drinkImg = reward.drinks[0].strDrinkThumb;
+		var drinkImgEl = document.createElement("img");
+		drinkImgEl.src = drinkImg;
+		drinkImgEl.classList.add("w-50");
+		quizEl.appendChild(drinkImgEl);
+
+		var drinkInstructions = reward.drinks[0].strInstructions;
+		var drinkInstructionsEl = document.createElement("p");
+		drinkInstructionsEl.textContent = drinkInstructions;
+		quizEl.appendChild(drinkInstructionsEl);
 
 		var ingredientList = document.createElement("ul");
 		ingredientList.classList.add("text-center");
@@ -200,5 +247,16 @@ function gameLost() {
 				ingredientList.appendChild(newItem);
 			}
 		}
+
+		var currentDrink = {
+			image: drinkImg,
+			name: drinkName,
+			alcoholic: drinkAlc,
+			glass: glassType,
+			instructions: drinkInstructions,
+			ingredients: ingredientSet,
+		};
+		localStorage.setItem("drink", JSON.stringify(currentDrink));
+		localStorage.setItem("lastScore", score);
 	}
 }
