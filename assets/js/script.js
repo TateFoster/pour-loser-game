@@ -142,127 +142,127 @@ function isCorrectAnswer(keywordsArray, userAnswerString) {
   }
 }
 
-// function gameLost() {
-//   fetch(rewardUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       reward = data;
-//       console.log(data);
-//       gameReward(reward);
-//     });
+function gameLost() {
+  fetch(rewardUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      reward = data;
+      console.log(data);
+      gameReward(reward);
+    });
 
-//   function gameReward(reward) {
-//     start.classList.add("hidden");
-//     answerFormEl.classList.add("hidden");
-//     rulesEl.remove();
-//     var congratulations = document.createElement("h2");
-//     congratulations.textContent =
-//       "Pour Loser! You scored " + score + " have a drink!";
-//     quizEl.prepend(congratulations);
+  function gameReward(reward) {
+    start.classList.add("hidden");
+    answerFormEl.classList.add("hidden");
+    rulesEl.remove();
+    var congratulations = document.createElement("h2");
+    congratulations.textContent =
+      "Pour Loser! You scored " + score + " have a drink!";
+    quizEl.prepend(congratulations);
 
-//     var drinkName = reward.drinks[0].strDrink;
-//     categoriesEl.textContent = drinkName;
+    var drinkName = reward.drinks[0].strDrink;
+    categoriesEl.textContent = drinkName;
 
-//     var drinkAlc = reward.drinks[0].strAlcoholic;
-//     questionsEl.textContent = drinkAlc;
+    var drinkAlc = reward.drinks[0].strAlcoholic;
+    questionsEl.textContent = drinkAlc;
 
-//     var glassType = reward.drinks[0].strGlass;
-//     var glassTypeEl = document.createElement("h4");
-//     glassTypeEl.textContent = glassType;
-//     quizEl.appendChild(glassTypeEl);
+    var glassType = reward.drinks[0].strGlass;
+    var glassTypeEl = document.createElement("h4");
+    glassTypeEl.textContent = glassType;
+    quizEl.appendChild(glassTypeEl);
 
-//     var drinkImg = reward.drinks[0].strDrinkThumb;
-//     var drinkImgEl = document.createElement("img");
-//     drinkImgEl.src = drinkImg;
-//     drinkImgEl.classList.add("w-50");
-//     quizEl.appendChild(drinkImgEl);
+    var drinkImg = reward.drinks[0].strDrinkThumb;
+    var drinkImgEl = document.createElement("img");
+    drinkImgEl.src = drinkImg;
+    drinkImgEl.classList.add("w-50");
+    quizEl.appendChild(drinkImgEl);
 
-//     var drinkInstructions = reward.drinks[0].strInstructions;
-//     var drinkInstructionsEl = document.createElement("p");
-//     drinkInstructionsEl.textContent = drinkInstructions;
-//     quizEl.appendChild(drinkInstructionsEl);
+    var drinkInstructions = reward.drinks[0].strInstructions;
+    var drinkInstructionsEl = document.createElement("p");
+    drinkInstructionsEl.textContent = drinkInstructions;
+    quizEl.appendChild(drinkInstructionsEl);
 
-//     var ingredientList = document.createElement("ul");
-//     ingredientList.classList.add("text-center");
-//     quizEl.appendChild(ingredientList);
+    var ingredientList = document.createElement("ul");
+    ingredientList.classList.add("text-center");
+    quizEl.appendChild(ingredientList);
 
-//     var ingredientSet = [];
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure1 + " " + reward.drinks[0].strIngredient1
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure2 + " " + reward.drinks[0].strIngredient2
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure3 + " " + reward.drinks[0].strIngredient3
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure4 + " " + reward.drinks[0].strIngredient4
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure5 + " " + reward.drinks[0].strIngredient5
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure6 + " " + reward.drinks[0].strIngredient6
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure7 + " " + reward.drinks[0].strIngredient7
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure8 + " " + reward.drinks[0].strIngredient8
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure9 + " " + reward.drinks[0].strIngredient9
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure10 + " " + reward.drinks[0].strIngredient10
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure11 + " " + reward.drinks[0].strIngredient11
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure12 + " " + reward.drinks[0].strIngredient12
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure13 + " " + reward.drinks[0].strIngredient13
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure14 + " " + reward.drinks[0].strIngredient14
-//     );
-//     ingredientSet.push(
-//       reward.drinks[0].strMeasure15 + " " + reward.drinks[0].strIngredient15
-//     );
+    var ingredientSet = [];
+    ingredientSet.push(
+      reward.drinks[0].strMeasure1 + " " + reward.drinks[0].strIngredient1
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure2 + " " + reward.drinks[0].strIngredient2
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure3 + " " + reward.drinks[0].strIngredient3
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure4 + " " + reward.drinks[0].strIngredient4
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure5 + " " + reward.drinks[0].strIngredient5
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure6 + " " + reward.drinks[0].strIngredient6
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure7 + " " + reward.drinks[0].strIngredient7
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure8 + " " + reward.drinks[0].strIngredient8
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure9 + " " + reward.drinks[0].strIngredient9
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure10 + " " + reward.drinks[0].strIngredient10
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure11 + " " + reward.drinks[0].strIngredient11
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure12 + " " + reward.drinks[0].strIngredient12
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure13 + " " + reward.drinks[0].strIngredient13
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure14 + " " + reward.drinks[0].strIngredient14
+    );
+    ingredientSet.push(
+      reward.drinks[0].strMeasure15 + " " + reward.drinks[0].strIngredient15
+    );
 
-//     console.log(ingredientSet);
+    console.log(ingredientSet);
 
-//     for (i = 0; i < ingredientSet.length; i++) {
-//       if (ingredientSet[i] === "null null") {
-//         ingredientSet.splice([i], 1);
-//         i--;
-//       } else if (ingredientSet[i].includes("null")) {
-//         notNull = ingredientSet[i].replace("null", "");
-//         ingredientSet.splice([i], 1, notNull);
-//         var newItem = document.createElement("li");
-//         newItem.textContent = ingredientSet[i];
-//         ingredientList.appendChild(newItem);
-//       } else {
-//         var newItem = document.createElement("li");
-//         newItem.textContent = ingredientSet[i];
-//         ingredientList.appendChild(newItem);
-//       }
-//     }
+    for (i = 0; i < ingredientSet.length; i++) {
+      if (ingredientSet[i] === "null null") {
+        ingredientSet.splice([i], 1);
+        i--;
+      } else if (ingredientSet[i].includes("null")) {
+        notNull = ingredientSet[i].replace("null", "");
+        ingredientSet.splice([i], 1, notNull);
+        var newItem = document.createElement("li");
+        newItem.textContent = ingredientSet[i];
+        ingredientList.appendChild(newItem);
+      } else {
+        var newItem = document.createElement("li");
+        newItem.textContent = ingredientSet[i];
+        ingredientList.appendChild(newItem);
+      }
+    }
 
-//     var currentDrink = {
-//       image: drinkImg,
-//       name: drinkName,
-//       alcoholic: drinkAlc,
-//       glass: glassType,
-//       instructions: drinkInstructions,
-//       ingredients: ingredientSet,
-//     };
-//     localStorage.setItem("drink", JSON.stringify(currentDrink));
-//     localStorage.setItem("lastScore", score);
-//   }
-// }
+    var currentDrink = {
+      image: drinkImg,
+      name: drinkName,
+      alcoholic: drinkAlc,
+      glass: glassType,
+      instructions: drinkInstructions,
+      ingredients: ingredientSet,
+    };
+    localStorage.setItem("drink", JSON.stringify(currentDrink));
+    localStorage.setItem("lastScore", score);
+  }
+}
