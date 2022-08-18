@@ -12,8 +12,13 @@ body{
 
 .card {
     display: inline-block;
-    height: 400px;
-    
+    height: 400px;   
+    width: 13%; 
+}
+
+.jumbotron {
+    height: 300px;
+    width: 68%;
 }
 
 .container-fluid {
@@ -36,7 +41,7 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: maroon;
+    /* background-color: maroon; */
     color: rgb(230, 230, 22);
 }
 
@@ -47,14 +52,54 @@ footer {
 
 .drunk-smiley {
     width: 100px;
-    position: relative; 
+    position: inherit; 
     top: 75px;
     right: 545px;
 }
 
 .laying-down {
     width: 125px;
-    position: relative;
+    position: inherit;
     top: 106px;
     left: 545px;
 }
+
+#footerContainer {
+    display: contents;
+}
+
+.nameImage {
+    width: 20%;
+}
+
+.nameImage:hover {
+    transform: scale(1.2);
+}
+
+
+@media only screen and (max-width: 767px) {
+    body {
+      background-image: url(../images/burgundy-gold-pixilate-in-576px.gif);
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    .nameImage{
+        width: 100%;
+    }
+  }
+
+
+  @media only screen and (max-width: 425px) {
+    body {
+      background-image: url(../images/burgundy-gold-pixilate-in-425px.gif);
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    .nameImage {
+        width: 100%;
+    }
+  }
+
+  
