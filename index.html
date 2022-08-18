@@ -30,14 +30,12 @@
 			<div class="card col-12 col-md-2">
 				<img
 					src="https://thumbs.dreamstime.com/x/animation-words-high-score-video-computer-game-screen-written-red-letters-over-tunnel-multi-colored-glowing-square-176188671.jpg"
-					class="card-img-top"
+					class="card-img-top w-100"
 					alt="#"
 				/>
 				<div class="card-body">
-					<h5 class="card-title">Last Score</h5>
-					<p class="card-text" id="score">
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
+					<h4 class="card-title text-center">Last Score</h4>
+				<h2 class="card-title text-center" id="score"></h2>
 					</p>
 				</div>
 			</div>
@@ -48,10 +46,11 @@
 			>
 				<!-- dynamic elements here -->
 				<h2 id="category">Rules:</h2>
-				<h3 id="question">
-					All answers must be spelled correctly, you must be of legal drinking
-					age to drink alcohol
-				</h3>
+				<h3 id="question"></h3>
+				<ul id="rules" class="text-center">
+					<li>All answers must be spelled correctly</li>
+					<li>you must be of legal drinking age to drink alcohol</li>
+				</ul>
 				<form id="answerForm" class="hidden" action="">
 					<label for=""
 						>Answer:
@@ -65,14 +64,19 @@
 				</a>
 			</div>
 			<!-- last earned drink -->
-			<div class="card col-12 col-md-2">
-				<img src="#" class="card-img-top" id="oldDrinkImg" alt="#" />
+			<div class="card col-12 col-md-2 d-flex flex-column align-items-center">
+				<img
+					src="https://cdn.pixabay.com/photo/2017/01/23/09/52/water-2001912_960_720.jpg"
+					class="card-img-top h-50 align-self-center"
+					id="oldDrinkImg"
+					alt="image of bottles of water"
+				/>
 				<div class="card-body">
-					<h5 class="card-title" id="oldName">Card title</h5>
+					<h5 class="card-title" id="oldName">Water you waiting for?</h5>
+					<h6 class="card-title" id="oldAlc"></h6>
 					<h6 class="card-title" id="oldGlass"></h6>
 					<p class="card-text" id="oldInstructions">
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
+						Earn yourself a real drink!
 					</p>
 				</div>
 				<ul class="list-group list-group-flush" id="oldIngredients">
