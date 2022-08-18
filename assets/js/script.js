@@ -7,7 +7,6 @@ var oldScore = 0;
 var rulesEl = document.querySelector("#rules");
 var start = document.querySelector("#startBtn");
 var answerFormEl = document.querySelector("#answerForm");
-var answer = document.querySelector("#answer");
 var oldScoreEl = document.querySelector("#score");
 var oldDrinkEl = document.querySelector("#oldName");
 var oldAlcEl = document.querySelector("#oldAlc");
@@ -87,59 +86,78 @@ function startQuiz(event) {
       questionsEl.textContent = newData[index].question; //1 question
 
       function nextQuestion(event) {
-        index++;
-        event.preventDefault();
-        if (answer.value != "") {
-          questionsEl.textContent = newData[index].question;
-          categoriesEl.textContent =
-            "CATEGORY: " + "'" + newData[index].category["title"] + "'";
-          answer.value = "";
-        } else return;
+		  var userAnswer = document.querySelector("#answer").value;
+
+		  event.preventDefault();
+		  console.log("answerArray  = " + newData[index].answer);
+			console.log("userAnswer = " + userAnswer);
+
+			// First, clean the userAnswer
+			var cleanAnswer = userAnswer.trim().toLowerCase();
+			console.log("cleanAnswer = " + cleanAnswer);
+
+			// Second, get & clean the API answer (to grade against)
+			var answerFromAPI = newData[index].answer;
+			console.log("answerFromAPI =  " + answerFromAPI);
+			// ! text.replace(unwantedText, "")
+			var cleanAnswerFromAPI = answerFromAPI.trim().toLowerCase();
+			console.log("cleanAnswerFromAPI = " + cleanAnswerFromAPI);
+
+			// Third, convert the singular answer from answerArray into an array of strings 
+			// i.e. return ['the', 'brown' 'dog'] from answerArray[i] = 'the brown dog'
+			var correctAnswerArray = cleanAnswerFromAPI.split(' ');
+			console.log("correctAnswerArray is: " + correctAnswerArray);
+
+			// Finally, grade the answer
+		  console.log("isCorrectAnswer() = " + isCorrectAnswer(correctAnswerArray, cleanAnswer));
+		  
+        if (isCorrectAnswer(correctAnswerArray, cleanAnswer)) {
+			index++;
+			score++;
+			questionsEl.textContent = newData[index].question;
+            categoriesEl.textContent = "CATEGORY: " + "'" + newData[index].category["title"] + "'";
+            document.querySelector("#answer").value = "";
+		} else {
+			gameLost();
+		}
       }
 
-      answerFormEl.addEventListener("submit", nextQuestion);
-    });
+		answerFormEl.addEventListener("submit", nextQuestion);
+	});
 }
 
 // TODO: have event listener for click for starting game
 // start.addEventListener("click", gameLost);
-// TODO: have event listener for submit to check answers and move on to index question
-// trim input, toLowerCase input and answer\
-// ? regular expressions to remove articles
+// TODO: have event listener for submit to check answers and move on to next question
 
-// TODO: Grade the user's answer as a boolean where true=Correct and false=Incorrect
-// Get keywords from answer (param)
-// Match keywords in userAnswer (param)
-// compare to a logical threshold for correctness --- isCorrectAnswer boolean
 
-var keywordsArray = ["apple", "fritters", "good"];
-var userAnswerString = "apple fritters bad";
+// function to grade the user's answer and return a boolean where true=Correct and false=Incorrect
 function isCorrectAnswer(keywordsArray, userAnswerString) {
-  var thresholdToBeCorrect = 0.8; // min. required % to be correct
-  var countKeywords = keywordsArray.length; // total number of keywords in keywordsArray
-  var matchedKeywords = 0; // tracker for correctly answered keywords
+	var thresholdToBeCorrect = 0.8; // min. required % to be correct
+	var countKeywords = keywordsArray.length; // total number of keywords in keywordsArray
+	var matchedKeywords = 0; // tracker for correctly answered keywords
 
-  // for each keyword in keywordsArray
-  for (var iKeywords = 0; iKeywords < countKeywords; iKeywords++) {
-    // if there is a match found in userAnswerString
-    var isMatch = userAnswerString.match(keywordsArray[iKeywords]);
-    // if match() returned null, then no match in userAnswerString was found for that keyword
-    if (isMatch != null) {
-      // add 1 to matchedKeywords
-      matchedKeywords++;
-    }
-  }
+	// for each keyword in keywordsArray
+	for (var iKeywords = 0; iKeywords < countKeywords; iKeywords++) {
+		// if there is a match found in userAnswerString
+		var isMatch = userAnswerString.match(keywordsArray[iKeywords]);
+		// if match() returned null, then no match in userAnswerString was found for that keyword
+		if (isMatch != null) {
+			// add 1 to matchedKeywords
+			matchedKeywords++;
+		}
+	}
 
-  var matchPercentage = matchedKeywords / countKeywords; // % correct by the user
+	var matchPercentage = matchedKeywords / countKeywords; // % correct by the user
 
-  // if matchPercentage satisfies the threshold for a correct answer
-  if (matchPercentage >= thresholdToBeCorrect) {
-    // Then answer is correct;
-    return true;
-  } else {
-    // Then answer is incorrect;
-    return false;
-  }
+	// if matchPercentage satisfies the threshold for a correct answer
+	if (matchPercentage >= thresholdToBeCorrect) {
+		// Then answer is correct;
+		return true;
+	} else {
+		// Then answer is incorrect;
+		return false;
+	}
 }
 
 function gameLost() {
