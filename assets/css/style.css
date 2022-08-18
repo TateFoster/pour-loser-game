@@ -13,25 +13,32 @@ body{
 .card {
     display: inline-block;
     height: 400px;   
-    width: 13%; 
+    width: 14%; 
+    margin-top: 100px;
 }
 
 .jumbotron {
     height: 300px;
     width: 68%;
+    margin-top: 100px;
 }
 
 .container-fluid {
     margin-top: 100px;
 }
 
+.jumbotron {
+    margin-top: 300px;
+}
+
 #startBtn {
-    margin-top: 30px;
+    margin-top: 100px;
 }
 
 #answer {
     margin-top: 30px;
 }
+
 
 .hidden {
     display: none;
@@ -39,30 +46,12 @@ body{
 
 footer {
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     text-align: center;
     /* background-color: maroon; */
     color: rgb(230, 230, 22);
 }
 
-.card-img-top {
-    width: 218px;
-    margin-left: -14px;
-}
-
-.drunk-smiley {
-    width: 100px;
-    position: inherit; 
-    top: 75px;
-    right: 545px;
-}
-
-.laying-down {
-    width: 125px;
-    position: inherit;
-    top: 106px;
-    left: 545px;
-}
 
 #footerContainer {
     display: contents;
@@ -76,17 +65,53 @@ footer {
     transform: scale(1.2);
 }
 
+#pixelFont {
+    font-family: 'Common Pixel', sans-serif;
+    color: rgb(242, 255, 57);
+    font-size: 12px;
+    font-stretch: expanded;
 
-@media only screen and (max-width: 767px) {
+ 
+}
+
+#score {
+    font-family: 'Common Pixel', sans-serif;
+    color: rgb(242, 255, 57);
+    font-size: 25px;
+ 
+}
+
+#lastEarnedDrink {
+    overflow-y: scroll;
+    color: rgb(242, 255, 57);
+}
+
+@media only screen and (max-width: 768px) {
     body {
       background-image: url(../images/burgundy-gold-pixilate-in-576px.gif);
       background-position: top center;
       background-repeat: no-repeat;
       background-size: 100% 100%;
     }
+    .card {
+        width: 99%;
+        margin: 0;
+    }
+    #scoreBoard {
+        margin-top: 500px;
+    }
+    .jumbotron {
+        width: 99%;
+    }
     .nameImage{
         width: 100%;
     }
+    #pixelFont {
+        font-size: 80px;
+    }
+    #score {
+        font-size: 150px;
+    }   
   }
 
 
@@ -100,6 +125,20 @@ footer {
     .nameImage {
         width: 100%;
     }
+    .card {
+        width: 99%;
+    }
   }
+
+  @media only screen and (max-width: 375px) {
+    #pixelFont {
+        font-size: 50px;
+    }
+    #score {
+        font-size: 100px;
+}
+
+  }
+
 
   
