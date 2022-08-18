@@ -17,16 +17,14 @@
 		<link rel="stylesheet" href="./assets/css/button.css" />
 		<title>Document</title>
 	</head>
-	<body
-		class="body d-flex align-items-center justify-content-between flex-wrap"
-	>
+	<body class="body d-flex align-items-center flex-wrap">
 		<!-- header element -->
 		<header>
 			<h1></h1>
 		</header>
 		<!-- main body container has cards either side and quiz center -->
 		<main
-			class="container-fluid row d-flex justify-content-between align-items-center"
+			class="container-fluid row d-flex justify-content-between align-items-center flex-column flex-md-row"
 		>
 			<!-- score card -->
 			<div class="card col-12 col-md-2">
@@ -41,11 +39,15 @@
 			</div>
 			<!-- quiz section -->
 			<div
-				class="jumbotron d-flex flex-column align-items-center col-12 col-md-8"
+				class="jumbotron d-flex flex-column align-items-center col-10 col-md-6 bg-white rounded my-3"
+				id="quizBoard"
 			>
 				<!-- dynamic elements here -->
-				<h2 id="category">rules</h2>
-				<h3 id="question">rules must be spelled correctly</h3>
+				<h2 id="category">Rules:</h2>
+				<h3 id="question">
+					All answers must be spelled correctly, you must be of legal drinking
+					age to drink alcohol
+				</h3>
 				<form id="answerForm" class="hidden" action="">
 					<label for=""
 						>Answer:
@@ -60,15 +62,16 @@
 			</div>
 			<!-- last earned drink -->
 			<div class="card col-12 col-md-2">
-				<img src="#" class="card-img-top" alt="#" />
+				<img src="#" class="card-img-top" id="oldDrinkImg" alt="#" />
 				<div class="card-body">
-					<h5 class="card-title" id="drinkName">Card title</h5>
-					<p class="card-text" id="instructions">
+					<h5 class="card-title" id="oldName">Card title</h5>
+					<h6 class="card-title" id="oldGlass"></h6>
+					<p class="card-text" id="oldInstructions">
 						Some quick example text to build on the card title and make up the
 						bulk of the card's content.
 					</p>
 				</div>
-				<ul class="list-group list-group-flush" id="ingredients">
+				<ul class="list-group list-group-flush" id="oldIngredients">
 					<!-- dynamic list ingredients -->
 				</ul>
 			</div>
