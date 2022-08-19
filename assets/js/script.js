@@ -30,6 +30,7 @@ var re = [
 	/\b(the)\b/gi,
 	/\b(to)\b/gi,
 	/\b(and)\b/gi,
+	/\b(of)\b/gi,
 	/\b(if)\b/gi,
 	/\((\w+)\)/gi,
 	/\(((\w+)\s+(\w+))+\)/gi,
@@ -98,7 +99,7 @@ function startQuiz(event) {
 				// Second, get & clean the API answer (to grade against)
 				var answerFromAPI = newData[index].answer;
 				console.log("answerFromAPI =  " + answerFromAPI);
-				// ! text.replace(unwantedText, "")
+				
 				answerReg();
 				function answerReg() {
 					for (i = 0; i < re.length; i++) {
@@ -146,16 +147,17 @@ function startQuiz(event) {
 
 // function to grade the user's answer and return a boolean where true=Correct and false=Incorrect
 function isCorrectAnswer(keywordsArray, userAnswerString) {
-	var thresholdToBeCorrect = 0.8; // min. required % to be correct
+	var thresholdToBeCorrect = 1; // min. required % to be correct
 	var countKeywords = keywordsArray.length; // total number of keywords in keywordsArray
 	var matchedKeywords = 0; // tracker for correctly answered keywords
 
 	// for each keyword in keywordsArray
 	for (var iKeywords = 0; iKeywords < countKeywords; iKeywords++) {
 		// if there is a match found in userAnswerString
-		var isMatch = userAnswerString.match(keywordsArray[iKeywords]);
+		var wordToMatch = keywordsArray[iKeywords];
+		var matchedArray = userAnswerString.match(`\\b${wordToMatch}\\b`);
 		// if match() returned null, then no match in userAnswerString was found for that keyword
-		if (isMatch != null) {
+		if (matchedArray != null) {
 			// add 1 to matchedKeywords
 			matchedKeywords++;
 		}
