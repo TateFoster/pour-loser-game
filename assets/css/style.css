@@ -18,17 +18,15 @@ body{
 }
 
 .jumbotron {
-    height: 300px;
+    height: 400px;
     width: 68%;
+    color: rgb(230, 230, 22);
+    overflow: auto;
     margin-top: 100px;
 }
 
 .container-fluid {
     margin-top: 100px;
-}
-
-.jumbotron {
-    margin-top: 300px;
 }
 
 #startBtn {
@@ -46,9 +44,7 @@ body{
 
 footer {
     flex-direction: column;
-    /* align-items: center; */
     text-align: center;
-    /* background-color: maroon; */
     color: rgb(230, 230, 22);
 }
 
@@ -57,8 +53,12 @@ footer {
     display: contents;
 }
 
-.nameImage {
+footer a {
     width: 20%;
+}
+
+.nameImage {
+    width: 100%;
 }
 
 .nameImage:hover {
@@ -70,20 +70,24 @@ footer {
     color: rgb(242, 255, 57);
     font-size: 12px;
     font-stretch: expanded;
-
- 
 }
 
 #score {
     font-family: 'Common Pixel', sans-serif;
     color: rgb(242, 255, 57);
-    font-size: 25px;
- 
+    font-size: 25px; 
 }
 
 #lastEarnedDrink {
-    overflow-y: scroll;
     color: rgb(242, 255, 57);
+    overflow: hidden;
+    overflow-y: scroll;
+    overscroll-behavior: auto;
+}
+
+::-webkit-scrollbar {
+    display: none;
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -112,7 +116,10 @@ footer {
     #score {
         font-size: 150px;
     }   
-  }
+    footer a {
+        width: 100%;
+    }
+  
 
 
   @media only screen and (max-width: 425px) {
@@ -128,17 +135,31 @@ footer {
     .card {
         width: 99%;
     }
-  }
 
-  @media only screen and (max-width: 375px) {
+    .nameImage {
+        width: 100%;
+    }
+    footer a {
+        width: 100%;
+    }
+
+
+  
+
+  @media only screen and (max-width: 374px) {
     #pixelFont {
         font-size: 50px;
     }
     #score {
         font-size: 100px;
-}
+    }
+    .nameImage {
+        width: 100%;
+    }
+    footer a {
+        width: 100%;
+    }
+  }  
 
-  }
 
-
-  
+} 
