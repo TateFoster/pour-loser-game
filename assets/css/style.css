@@ -66,20 +66,22 @@ footer a {
 }
 
 #pixelFont {
-    font-family: 'Common Pixel', sans-serif;
+    font-family: Silkscreen, sans-serif;
     color: rgb(242, 255, 57);
     font-size: 12px;
     font-stretch: expanded;
+    padding-top: 50px;
 }
 
 #score {
-    font-family: 'Common Pixel', sans-serif;
+    font-family: Silkscreen, sans-serif;
     color: rgb(242, 255, 57);
     font-size: 25px; 
 }
 
 #lastEarnedDrink {
     color: rgb(242, 255, 57);
+    margin-top: 100px;
     overflow: hidden;
     overflow-y: scroll;
     overscroll-behavior: auto;
@@ -112,14 +114,15 @@ footer a {
     }
     #pixelFont {
         font-size: 80px;
+        padding: 0px;
     }
     #score {
-        font-size: 150px;
+        font-size: 130px;
     }   
     footer a {
         width: 100%;
     }
-  
+} 
 
 
   @media only screen and (max-width: 425px) {
@@ -143,10 +146,14 @@ footer a {
         width: 100%;
     }
 
+    #pixelFont {
+        padding: 0;
+    }
+  }
 
   
 
-  @media only screen and (max-width: 374px) {
+  @media only screen and (max-width: 375px) {
     #pixelFont {
         font-size: 50px;
     }
@@ -159,7 +166,7 @@ footer a {
     footer a {
         width: 100%;
     }
+    #score {
+        font-size: 150px;
+    }
   }  
-
-
-} 
