@@ -16,6 +16,7 @@
     width: 200px;
     overflow: hidden;
     border-radius: 40px;
+    opacity: 2.0;
   }
   
   .button span {

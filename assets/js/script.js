@@ -17,6 +17,24 @@ var oldDrinkIngredientsEl = document.querySelector("#oldIngredients");
 var categoriesEl = document.querySelector("#category");
 var questionsEl = document.querySelector("#question");
 var quizEl = document.querySelector("#quizBoard");
+var re = [
+  /\,/g,
+  /\//g,
+  /\\/g,
+  /<i>/gi,
+  /<\/i>/gi,
+  /&/g,
+  /\//g,
+  /\b(a)\b/gi,
+  /\b(an)\b/gi,
+  /\b(the)\b/gi,
+  /\b(to)\b/gi,
+  /\b(and)\b/gi,
+  /\b(if)\b/gi,
+  /\((\w+)\)/gi,
+  /\(((\w+)\s+(\w+))+\)/gi,
+  /[A-Z]\./g,
+];
 
 oldDrinkCard();
 oldScoreCard();
@@ -45,28 +63,8 @@ function oldScoreCard() {
   oldScoreEl.textContent = oldScore;
 }
 
-function getData(data) {
-  console.log(data);
-  var categoryArray = []; // array to hold the categories
-  var questionArray = []; // array to hold the questions
-  var answerArray = []; // array to hold the answers
-  // for each item in data
-  for (var i = 0; i < 5; i++) {
-    // add new Category to the categoryArray
-    categoryArray[i] = data[i].category["title"];
-    // add new Question to the questionArray
-    questionArray[i] = data[i].question;
-    // add new Answer to the answerArray
-    answerArray[i] = data[i].answer;
-    console.log(answerArray);
-  }
-
-  // change #category TextContent
-  // change #question TextContent
-}
 start.addEventListener("click", startQuiz);
 
-// TODO: Function to generate questions from API
 function startQuiz(event) {
   event.preventDefault();
   rulesEl.remove();
@@ -79,7 +77,7 @@ function startQuiz(event) {
     })
     .then(function (data) {
       var newData = data;
-      getData(newData);
+      console.log(newData);
       //------------------------
 
       categoriesEl.textContent =
@@ -87,7 +85,6 @@ function startQuiz(event) {
       questionsEl.textContent = newData[index].question; //1 question
 
       function nextQuestion(event) {
-        //remove 2nd par
         var userAnswer = document.querySelector("#answer").value;
 
         event.preventDefault();
@@ -102,6 +99,17 @@ function startQuiz(event) {
         var answerFromAPI = newData[index].answer;
         console.log("answerFromAPI =  " + answerFromAPI);
         // ! text.replace(unwantedText, "")
+        answerReg();
+        function answerReg() {
+          for (i = 0; i < re.length; i++) {
+            var testAnswer = answerFromAPI.replaceAll(re[i], "");
+            console.log(re[i]);
+            answerFromAPI = testAnswer;
+          }
+          console.log(testAnswer);
+        }
+        console.log("answerFromAPI =  " + answerFromAPI);
+
         var cleanAnswerFromAPI = answerFromAPI.trim().toLowerCase();
         console.log("cleanAnswerFromAPI = " + cleanAnswerFromAPI);
 
